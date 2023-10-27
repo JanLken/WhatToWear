@@ -1,11 +1,24 @@
 package com.webtech.whattowear.controller;
 
+import com.webtech.whattowear.model.Clothes;
+import com.webtech.whattowear.repository.ClothesRepository;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class HelloController {
+@RequestMapping("/api/clothes")
+public class ClothesController {
 
-    @GetMapping("/hello")
+    private final ClothesRepository repository;
+
+    public ClothesController(ClothesRepository repository){
+        this.repository = repository;
+    }
+    @GetMapping
+    public Iterable<Clothes> findAll() {
+        return repository.findAll();
+    }
+/*
+   @GetMapping("/hello")
     public String hello() {
         return "Hello World";
     }
@@ -24,7 +37,7 @@ public class HelloController {
     public String queryparam(@RequestParam int userid, @RequestParam(required = false) String password) {
         return "UserID: " + userid + " Password: " + password;
     }
-
+*/
 
 
 }

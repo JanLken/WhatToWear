@@ -9,5 +9,3 @@ Die Funktionen der App sollen die Erstellung der Datenbank sein, das löschen un
 Außerdem auch das hinzufügen von Eigenschaften für die Kleidungsstücke.
 Das Eingeben von bestimmten Wetterbedingungen und der persönlichen Präferenzen (10°-15°C nur kurze Hosen/Pullover)
 Dies lässt sich außerdem durch Einsatz einer Wetter API erweitern und automatischer bzw. Nutzerfreundlicher gestalten.
-
-TEst
