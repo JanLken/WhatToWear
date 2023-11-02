@@ -1,37 +1,39 @@
 package com.webtech.whattowear.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.webtech.whattowear.model.Clothes;
-import com.webtech.whattowear.repository.ClothesRepository;
 import com.webtech.whattowear.service.ClothesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/clothes")
 public class ClothesController {
-
-    private final ClothesRepository repository;
 
     @Autowired
     ClothesService service;
 
+    Logger logger = LoggerFactory.getLogger(ClothesController.class);
+
     @PostMapping("/clothes")
-    public Clothes createClothes(@RequestBody Clothes clothes){
+    public Clothes createClothes(@RequestBody Clothes clothes) {
         return service.save(clothes);
     }
 
     @GetMapping("/clothes/{id}")
-    public Clothes getClothes(@PathVariable Integer id) {
-        return service.get(id);
+    public Clothes getClothes(@PathVariable String id) {
+        logger.info("GET request on route things with {}", id);
+        Long clothesId = Long.parseLong(id);
+        return service.get(clothesId);
     }
 
-    public ClothesController(ClothesRepository repository){
-        this.repository = repository;
+    @GetMapping("/clothes")
+    public List<Clothes> getAllClothes() {
+        return service.getAll();
     }
-    @GetMapping
-    public Iterable<Clothes> findAll() {
-        return repository.findAll();
-    }
+
+}
 
 
     /*
@@ -57,4 +59,4 @@ public class ClothesController {
 */
 
 
-}
+
