@@ -15,16 +15,6 @@ public class WhattowearApplication {
 		SpringApplication.run(WhattowearApplication.class, args);
 	}
 
-	/*
-	@Bean
-	CommandLineRunner commandLineRunner(ClothesRepository repository) {
-		return args -> {
-			repository.save(new Clothes());
-
-		};
-		}
-
-	 */
 }
 
 
