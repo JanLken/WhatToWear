@@ -1,23 +1,22 @@
 package com.webtech.whattowear.model;
 
 import com.webtech.whattowear.service.ClothesService;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.persistence.*;
+
 
 @Entity
+@Table(name ="clothes")
 public class Clothes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name ="category", nullable = false)
     private String category;
+    @Column(name ="minimal_temperature", nullable = false)
     private Long minTemp;
+    @Column(name ="maximum_temperature", nullable = false)
     private Long maxTemp;
-
-    private String pathPic;
 
     public Clothes() {}
 
@@ -80,7 +79,7 @@ public class Clothes {
 
     @Override
     public String toString() {
-        return "Thing{" +
+        return "Clothes{" +
                 "id=" + id +
                 ", category='" + category + '\'' +
                 ", minTemp=" + minTemp +

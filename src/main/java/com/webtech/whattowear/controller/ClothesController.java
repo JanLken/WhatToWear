@@ -1,5 +1,6 @@
 package com.webtech.whattowear.controller;
 
+import com.webtech.whattowear.repository.ClothesRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.webtech.whattowear.model.Clothes;
@@ -9,7 +10,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:3000")
 public class ClothesController {
+/*
+    @Autowired
+    private ClothesRepository clothesRepository;
+
+    @GetMapping("/clothes")
+    public List<Clothes> fetchClothes(){
+    return (List<Clothes>) clothesRepository.findAll();
+    }
+}
+
+*/
+
+
 
     @Autowired
     ClothesService service;
