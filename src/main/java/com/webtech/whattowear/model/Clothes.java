@@ -16,8 +16,6 @@ public class Clothes {
     private Long minTemp;
     private Long maxTemp;
 
-    private String pathPic;
-
     public Clothes() {}
 
     public Clothes(String category, Long minTemp, Long maxTemp) {

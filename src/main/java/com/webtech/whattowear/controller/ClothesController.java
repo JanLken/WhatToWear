@@ -8,25 +8,10 @@ import com.webtech.whattowear.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import org.springframework.http.ResponseEntity;
-
 
 @RestController
 @CrossOrigin("http://localhost:3000")
 public class ClothesController {
-/*
-    @Autowired
-    private ClothesRepository clothesRepository;
-
-    @GetMapping("/clothes")
-    public List<Clothes> fetchClothes(){
-    return (List<Clothes>) clothesRepository.findAll();
-    }
-}
-
-*/
-
-
 
     @Autowired
     ClothesService service;
@@ -51,37 +36,12 @@ public class ClothesController {
         return new Clothes(); // Using HttpStatus.OK directly
     }
 
-
-
     @GetMapping("/clothes")
     public List<Clothes> getAllClothes() {
         return service.getAll();
     }
 
 }
-
-
-    /*
-   @GetMapping("/hello")
-    public String hello() {
-        return "Hello World";
-    }
-
-    @GetMapping("/user/{userid}")
-    public String userid(@PathVariable int userid) {
-        return "Hello World " + userid;
-    }
-
-    @GetMapping("/user/{userid}/password/{password}")
-    public String useridupassword(@PathVariable int userid, @PathVariable String password) {
-        return "UserID: " + userid + " Password: " + password;
-    }
-
-    @GetMapping("/user")
-    public String queryparam(@RequestParam int userid, @RequestParam(required = false) String password) {
-        return "UserID: " + userid + " Password: " + password;
-    }
-*/
 
 
 
