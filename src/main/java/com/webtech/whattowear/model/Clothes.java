@@ -77,7 +77,7 @@ public class Clothes {
 
     @Override
     public String toString() {
-        return "Thing{" +
+        return "Clothes{" +
                 "id=" + id +
                 ", category='" + category + '\'' +
                 ", minTemp=" + minTemp +
