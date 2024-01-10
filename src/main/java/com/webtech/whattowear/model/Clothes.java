@@ -63,7 +63,7 @@ public class Clothes {
 
         Clothes clothes = (Clothes) o;
 
-        if (getMinTemp() != clothes.getMinTemp()) return false;
+        if (getMinTemp().equals(clothes.getMinTemp())) return false;
         if (getId() != null ? !getId().equals(clothes.getId()) : clothes.getId() != null) return false;
         return getCategory() != null ? getCategory().equals(clothes.getCategory()) : clothes.getCategory() == null;
     }
