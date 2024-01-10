@@ -3,11 +3,14 @@ package com.webtech.whattowear.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.webtech.whattowear.model.Clothes;
-import com.webtech.whattowear.service.ClothesService;
+import com.webtech.whattowear.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import org.springframework.http.ResponseEntity;
 
+
+@CrossOrigin
 @RestController
 public class ClothesController {
 
@@ -27,6 +30,14 @@ public class ClothesController {
         Long clothesId = Long.parseLong(id);
         return service.get(clothesId);
     }
+
+    @DeleteMapping("/clothes/{id}")
+    public Clothes deleteClothes(@PathVariable Long id) {
+        service.delete(id);
+        return new Clothes(); // Using HttpStatus.OK directly
+    }
+
+
 
     @GetMapping("/clothes")
     public List<Clothes> getAllClothes() {

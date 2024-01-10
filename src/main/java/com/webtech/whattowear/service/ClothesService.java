@@ -14,8 +14,8 @@ public class ClothesService {
     @Autowired
     ClothesRepository repo;
 
-    public Clothes save(Clothes thing) {
-        return repo.save(thing);
+    public Clothes save(Clothes clothes) {
+        return repo.save(clothes);
     }
 
     public Clothes get(Long id) {
@@ -28,4 +28,9 @@ public class ClothesService {
         for (Clothes clothe : iterator)  clothes.add(clothe);
         return clothes;
     }
+
+    public void delete(Long id) {
+        repo.deleteById(id);
+    }
+
 }
