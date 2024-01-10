@@ -11,7 +11,6 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 
-@CrossOrigin
 @RestController
 @CrossOrigin("http://localhost:3000")
 public class ClothesController {
