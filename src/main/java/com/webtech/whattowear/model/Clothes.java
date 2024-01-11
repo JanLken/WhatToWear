@@ -15,13 +15,23 @@ public class Clothes {
     private String category;
     private Long minTemp;
     private Long maxTemp;
+    private String description;
 
     public Clothes() {}
 
-    public Clothes(String category, Long minTemp, Long maxTemp) {
+    public Clothes(String category, Long minTemp, Long maxTemp, String description) {
         this.category = category;
         this.maxTemp = maxTemp;
         this.minTemp = minTemp;
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Long getId() {
@@ -82,6 +92,7 @@ public class Clothes {
                 ", category='" + category + '\'' +
                 ", minTemp=" + minTemp +
                 ", maxTemp=" + maxTemp +
+                ", maxTemp=" + description +
                 '}';
     }
 
