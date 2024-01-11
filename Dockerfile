@@ -11,4 +11,3 @@ LABEL org.name="JanLken"
 # Package stage
 #
 FROM eclipse-temurin:17-jdk-jammy
-ENTRYPOINT {"java","-jar","/app.jar"]
