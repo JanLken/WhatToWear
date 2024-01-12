@@ -16,6 +16,9 @@ public class ClothesController {
     @Autowired
     ClothesService service;
 
+    @Autowired
+    private ClothesRepository clothesRepository; // Add this line
+
     Logger logger = LoggerFactory.getLogger(ClothesController.class);
 
     @PostMapping("/clothes")
@@ -41,6 +44,19 @@ public class ClothesController {
         return service.getAll();
     }
 
+    @PutMapping("/clothes/{id}")
+    public Clothes updateClothes(@PathVariable Long id, @RequestBody Clothes clothesDetails) {
+        Clothes clothes = clothesRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Clothes not found"));
+
+        clothes.setCategory(clothesDetails.getCategory());
+        clothes.setDescription(clothesDetails.getDescription());
+        clothes.setMinTemp(clothesDetails.getMinTemp());
+        clothes.setMaxTemp(clothesDetails.getMaxTemp());
+        // ... set other fields as needed ...
+
+        return clothesRepository.save(clothes);
+    }
 }
 
 
