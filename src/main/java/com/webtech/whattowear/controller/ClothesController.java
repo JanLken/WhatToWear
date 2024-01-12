@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+//@CrossOrigin("http://localhost:3000")
 public class ClothesController {
 
     @Autowired
     ClothesService service;
 
     @Autowired
-    private ClothesRepository clothesRepository; // Add this line
+    private ClothesRepository clothesRepository;
 
     Logger logger = LoggerFactory.getLogger(ClothesController.class);
 
@@ -32,7 +32,6 @@ public class ClothesController {
         Long clothesId = Long.parseLong(id);
         return service.get(clothesId);
     }
-
     @DeleteMapping("/clothes/{id}")
     public Clothes deleteClothes(@PathVariable Long id) {
         service.delete(id);
@@ -53,7 +52,7 @@ public class ClothesController {
         clothes.setDescription(clothesDetails.getDescription());
         clothes.setMinTemp(clothesDetails.getMinTemp());
         clothes.setMaxTemp(clothesDetails.getMaxTemp());
-        // ... set other fields as needed ...
+
 
         return clothesRepository.save(clothes);
     }
