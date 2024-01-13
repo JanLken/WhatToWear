@@ -14,23 +14,23 @@ public class ClothesService {
     @Autowired
     private ClothesRepository clothesRepository;
 
-    public List<Clothes> getAllClothes() {
+    public List<Clothes> getAll() {
         return clothesRepository.findAll();
     }
 
-    public Optional<Clothes> getClothesById(Long id) {
+    public Optional<Clothes> getClothes(Long id) {
         return clothesRepository.findById(id);
     }
 
-    public Clothes saveClothes(Clothes clothes) {
+    public Clothes save(Clothes clothes) {
         return clothesRepository.save(clothes);
     }
 
-    public void deleteClothes(Long id) {
+    public void delete(Long id) {
         clothesRepository.deleteById(id);
     }
 
-    public Clothes updateClothes(Long id, Clothes clothesDetails) {
+    public Clothes update(Long id, Clothes clothesDetails) {
         Clothes clothes = clothesRepository.findById(id).orElseThrow(() -> new RuntimeException("Clothes not found"));
         clothes.setCategory(clothesDetails.getCategory());
         clothes.setDescription(clothesDetails.getDescription());
