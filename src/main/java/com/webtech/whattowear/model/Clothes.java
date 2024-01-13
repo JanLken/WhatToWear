@@ -1,45 +1,28 @@
 package com.webtech.whattowear.model;
 
-import com.webtech.whattowear.service.ClothesService;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 
 @Entity
+@Table(name = "clothes")
 public class Clothes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String category;
-    private Long minTemp;
-    private Long maxTemp;
     private String description;
-
-    public Clothes() {}
-
-    public Clothes(String category, Long minTemp, Long maxTemp, String description) {
-        this.category = category;
-        this.maxTemp = maxTemp;
-        this.minTemp = minTemp;
-        this.description = description;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Long getId() {
-        return id;
-    }
+    private Integer minTemp;
+    private Integer maxTemp;
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Id
+    public Long getId() {
+        return id;
     }
 
     public String getCategory() {
@@ -50,53 +33,27 @@ public class Clothes {
         this.category = category;
     }
 
-    public Long getMinTemp() {
-        return minTemp;
+    public String getDescription() {
+        return description;
     }
 
-    public void setMinTemp(Long minTemp) {
-        this.minTemp = minTemp;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Long getMaxTemp() {
+    public Integer getMaxTemp() {
         return maxTemp;
     }
 
-    public void setMaxTemp(Long maxTemp) {
+    public void setMaxTemp(Integer maxTemp) {
         this.maxTemp = maxTemp;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ClothesService)) return false;
-
-        Clothes clothes = (Clothes) o;
-
-        if (getMinTemp().equals(clothes.getMinTemp())) return false;
-        if (getId() != null ? !getId().equals(clothes.getId()) : clothes.getId() != null) return false;
-        return getCategory() != null ? getCategory().equals(clothes.getCategory()) : clothes.getCategory() == null;
+    public Integer getMinTemp() {
+        return minTemp;
     }
 
-    @Override
-    public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getCategory() != null ? getCategory().hashCode() : 0);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Clothes{" +
-                "id=" + id +
-                ", category='" + category + '\'' +
-                ", minTemp=" + minTemp +
-                ", maxTemp=" + maxTemp +
-                ", maxTemp=" + description +
-                '}';
-    }
-
-
-    public void add(Clothes clothes) {
+    public void setMinTemp(Integer minTemp) {
+        this.minTemp = minTemp;
     }
 }
