@@ -54,4 +54,11 @@ public class ClothesController {
         clothesService.delete(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/filter")
+    public ResponseEntity<List<Clothes>> getFilteredClothes(@RequestParam("minTemp") Long minTemp, @RequestParam("maxTemp") Long maxTemp, @RequestParam("categories") String categories) {
+        List<Clothes> filteredClothes = clothesService.getFilteredClothes(minTemp, maxTemp, categories);
+        return ResponseEntity.ok(filteredClothes);
+    }
+
 }

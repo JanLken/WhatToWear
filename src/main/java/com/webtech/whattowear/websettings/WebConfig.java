@@ -10,8 +10,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("https://whattowear-frontend.onrender.com","https:localhost:3000")
+        registry.addMapping("/clothes/**")
+                .allowedOrigins("http://localhost:3000", "https://whattowear-frontend.onrender.com/")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);

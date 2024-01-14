@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ClothesService {
@@ -30,12 +31,9 @@ public class ClothesService {
         clothesRepository.deleteById(id);
     }
 
-    public Clothes update(Long id, Clothes clothesDetails) {
-        Clothes clothes = clothesRepository.findById(id).orElseThrow(() -> new RuntimeException("Clothes not found"));
-        clothes.setCategory(clothesDetails.getCategory());
-        clothes.setDescription(clothesDetails.getDescription());
-        clothes.setMinTemp(clothesDetails.getMinTemp());
-        clothes.setMaxTemp(clothesDetails.getMaxTemp());
-        return clothesRepository.save(clothes);
+    public List<Clothes> getFilteredClothes(Long minTemp, Long maxTemp, String categories) {
+        return clothesRepository.findAll().stream()
+                .filter(clothes -> clothes.getMinTemp() <= maxTemp && clothes.getMaxTemp() >= minTemp && categories.contains(clothes.getCategory()))
+                .collect(Collectors.toList());
     }
 }
